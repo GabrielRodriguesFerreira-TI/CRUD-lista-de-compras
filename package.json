@@ -1,0 +1,28 @@
+{
+  "name": "crud-lista-de-compras",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsnd --cls --rs src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielRodriguesFerreira-TI/CRUD-lista-de-compras.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielRodriguesFerreira-TI/CRUD-lista-de-compras/issues"
+  },
+  "homepage": "https://github.com/GabrielRodriguesFerreira-TI/CRUD-lista-de-compras#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  }
+}
