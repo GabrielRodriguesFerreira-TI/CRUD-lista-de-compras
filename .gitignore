@@ -1,6 +1,7 @@
 logs
 *.log
 package-lock.log*
+workspaceInsomnia.json
 
 node_modules
 dist
