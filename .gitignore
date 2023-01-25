@@ -1,6 +1,7 @@
 logs
 *.log
 package-lock.log*
+package-lock.json
 workspaceInsomnia.json
 
 node_modules

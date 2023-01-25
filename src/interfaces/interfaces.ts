@@ -1,6 +1,6 @@
 interface iData {
-  name: string;
-  quantity: string;
+  name?: string;
+  quantity?: string;
 }
 
 interface iList {
@@ -9,6 +9,8 @@ interface iList {
   id: number;
 }
 
-type iClientRequired = "listName" | "data";
+type iListRequired = "listName" | "data";
 
-export { iList, iClientRequired };
+type iDataRequired = "name" | "quantity";
+
+export { iList, iListRequired, iDataRequired, iData };
