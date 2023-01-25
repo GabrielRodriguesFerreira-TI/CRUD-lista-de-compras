@@ -1,16 +1,21 @@
-interface iData {
+interface iDataRequest {
   name?: string;
   quantity?: string;
 }
 
 interface iList {
   listName: string;
-  data: iData[];
+  data: iDataRequest[];
   id: number;
 }
 
-type iListRequired = "listName" | "data";
+interface iListRequest {
+  listName: string;
+  data: {
+    name: string;
+    quantity: string;
+  }[];
+  id: number;
+}
 
-type iDataRequired = "name" | "quantity";
-
-export { iList, iListRequired, iDataRequired, iData };
+export { iList, iDataRequest, iListRequest };

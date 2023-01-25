@@ -1,20 +1,19 @@
 import {
-  iData,
-  iDataRequired,
+  iDataRequest,
   iList,
-  iListRequired,
+  iListRequest,
 } from "../interfaces/interfaces";
 import { typeOf } from "./typeOf";
 
-const validateListData = (payload: any): iList => {
+const validateListData = (payload: iListRequest): iList => {
   const payloadKeys: string[] = Object.keys(payload);
-  const requiredKeys: iListRequired[] = ["listName", "data"];
+  const requiredKeys: string[] = ["listName", "data"];
 
-  const hasRequiredKeys: boolean = payloadKeys.every((key: any) => {
+  const hasRequiredKeys: boolean = payloadKeys.every((key: string) => {
     return requiredKeys.includes(key);
   });
 
-  const hasRequiredKeysLess: boolean = requiredKeys.every((key: any) => {
+  const hasRequiredKeysLess: boolean = requiredKeys.every((key: string) => {
     return payloadKeys.includes(key);
   });
 
@@ -26,18 +25,26 @@ const validateListData = (payload: any): iList => {
     throw new Error('The list fields are: "listName" and "data"');
   }
 
-  payload.data.forEach((e: string) => {
-    const payloadDataKeys: string[] = Object.keys(e);
-    const requiredDataKeys: iDataRequired[] = ["name", "quantity"];
+  payload.data.forEach(
+    (
+      e: { name: string; quantity: string },
+      index: number,
+      array: { name: string; quantity: string }[]
+    ) => {
+      const payloadDataKeys: string[] = Object.keys(e);
+      const requiredDataKeys: string[] = ["name", "quantity"];
 
-    const hasRequiredDataKeys: boolean = payloadDataKeys.every((key: any) => {
-      return requiredDataKeys.includes(key);
-    });
+      const hasRequiredDataKeys: boolean = payloadDataKeys.every(
+        (key: string) => {
+          return requiredDataKeys.includes(key);
+        }
+      );
 
-    if (!hasRequiredDataKeys) {
-      throw new Error('Updatable fields are: "name" and "quantity"');
+      if (!hasRequiredDataKeys) {
+        throw new Error('Updatable fields are: "name" and "quantity"');
+      }
     }
-  });
+  );
 
   if (!typeOf("string", payload.listName)) {
     throw new Error("The list name need to be a string");
@@ -47,7 +54,7 @@ const validateListData = (payload: any): iList => {
     throw new Error("The data need to be a array");
   }
 
-  payload.data.forEach((e: iData) => {
+  payload.data.forEach((e: iDataRequest) => {
     if (!typeOf("string", e.name)) {
       throw new Error("The data values 'name' need to be a string");
     }

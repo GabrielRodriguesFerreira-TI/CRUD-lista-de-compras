@@ -1,11 +1,11 @@
-import { iDataRequired, iList } from "../interfaces/interfaces";
+import { iDataRequest } from "../interfaces/interfaces";
 import { typeOf } from "./typeOf";
 
-const validateUpdateListData = (payload: any): iList => {
+const validateUpdateListData = (payload: iDataRequest): iDataRequest => {
   const reqKey: string[] = Object.keys(payload);
-  const requiredReqKeys: iDataRequired[] = ["name", "quantity"];
+  const requiredReqKeys: string[] = ["name", "quantity"];
 
-  const hasRequiredReqKeys: boolean = reqKey.every((key: any) => {
+  const hasRequiredReqKeys: boolean = reqKey.every((key: string) => {
     return requiredReqKeys.includes(key);
   });
 

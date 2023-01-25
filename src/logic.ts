@@ -69,7 +69,7 @@ const updateListItem = (req: Request, res: Response): Response => {
     
     const parms = Number(req.params.purchaseListId);
     const listFind = list.findIndex((list) => list.id === parms);
-    
+
 
     list[listFind].data[req.updateItemIndex] = {
       ...req.updateItem,
