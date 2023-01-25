@@ -6,12 +6,14 @@ import {
   readLists,
   readOneList,
   updateListItem,
-  verifyIdExists,
 } from "./logic";
+import { verifyIdExists } from "./middlewares/verifyId";
+import { verifyUpdatesTypesExists } from "./middlewares/verifyUpdatesTypes";
 
 const server: Application = express();
 server.use(json());
 server.use("/purchaseList/:purchaseListId", verifyIdExists);
+server.use("/purchaseList/:purchaseListId/:itemName", verifyUpdatesTypesExists);
 
 server.post("/purchaseList", createList);
 server.get("/purchaseList", readLists);
